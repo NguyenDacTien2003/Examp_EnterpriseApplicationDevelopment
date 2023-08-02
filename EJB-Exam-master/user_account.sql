@@ -2,17 +2,11 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-
 --
--- Cơ sở dữ liệu: `user_account`
+-- Database: `user_account`
 --
-
--- --------------------------------------------------------
-
 --
--- Cấu trúc bảng cho bảng `authorities`
+-- Table structure for table `authorities`
 --
 
 CREATE TABLE `authorities` (
@@ -21,7 +15,7 @@ CREATE TABLE `authorities` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `authorities`
+-- Dumping data to the table `authorities`
 --
 
 INSERT INTO `authorities` (`username`, `authority`) VALUES
@@ -32,7 +26,7 @@ INSERT INTO `authorities` (`username`, `authority`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+--Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -42,7 +36,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
+--Dumping data to the table `users`
 --
 
 INSERT INTO `users` (`username`, `password`, `enabled`) VALUES
@@ -51,27 +45,19 @@ INSERT INTO `users` (`username`, `password`, `enabled`) VALUES
 ('user', '{bcrypt}$2a$12$bF7pqCah57kH2RpGSOVMzuzr9tJUmAUGhMXkb.TW.KWyCTM6WqtBK', 1);
 
 --
--- Chỉ mục cho các bảng đã đổ
---
-
---
--- Chỉ mục cho bảng `authorities`
+-- table `authorities`
 --
 ALTER TABLE `authorities`
   ADD KEY `username` (`username`);
 
 --
--- Chỉ mục cho bảng `users`
+-- table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`username`);
 
 --
--- Các ràng buộc cho các bảng đã đổ
---
-
---
--- Các ràng buộc cho bảng `authorities`
+-- Constraints for the table `authorities`
 --
 ALTER TABLE `authorities`
   ADD CONSTRAINT `authorities_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
